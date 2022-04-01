@@ -37,12 +37,16 @@ const Flower = require("./models/flower");
       console.log(flower);
     } catch (error) {
       console.log(error);
-    }
-  } // update function
+    } //find document by passing any detail
+  } else if (argsObj.filter) {
+    const flower = await Flower.findOne({});
+    console.log(flower);
+  }
+  // update function
   //npm start -- --update --name "tulip" --colour "purple" --indication "happiness" --price 7 or select any key and value
   else if (argsObj.update) {
     try {
-      const flower = await Flower.updateMany(
+      const flower = await Flower.updateOne(
         { name: argsObj.name } || { colour: argsObj.colour } || {
             indication: argsObj.indication,
           } || { price: argsObj.price }
@@ -55,6 +59,14 @@ const Flower = require("./models/flower");
   else if (argsObj.deleteOne) {
     const flower = await Flower.deleteOne({});
     console.log(flower);
+  } //this function need working
+  else if (argsObj.deleteKey) {
+    try {
+      const flower = await Flower.findOneAndDelete({});
+      console.log(flower);
+    } catch (error) {
+      console.log(error);
+    }
   }
   //delete compelete document
   else if (argsObj.deleteMany) {
@@ -62,7 +74,7 @@ const Flower = require("./models/flower");
       const flower = await Flower.deleteMany(
         { name: argsObj.name } || { colour: argsObj.colour } || {
             indication: argsObj.indication,
-          } || { price: argsObj.price }
+          }
       );
       console.log(flower);
     } catch (error) {
