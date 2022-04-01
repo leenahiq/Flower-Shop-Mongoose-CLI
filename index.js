@@ -59,7 +59,7 @@ const Flower = require("./models/flower");
   //delete compelete document
   else if (argsObj.deleteMany) {
     try {
-      const flower = await Flower.deleteOne(
+      const flower = await Flower.deleteMany(
         { name: argsObj.name } || { colour: argsObj.colour } || {
             indication: argsObj.indication,
           } || { price: argsObj.price }
