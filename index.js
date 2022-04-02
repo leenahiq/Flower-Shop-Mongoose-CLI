@@ -46,14 +46,12 @@ const Flower = require("./models/flower");
   //npm start -- --update --name "tulip" --colour "purple" --indication "happiness" --price 7 or select any key and value
   else if (argsObj.update) {
     try {
-      if (argsObj.newName) {
-        const flower = await Flower.updateOne(
-          { name: argsObj.name },
-          { $set: { name: argsObj.updated } }
-        );
+      const flower = await Flower.updateOne(
+        { name: argsObj.name },
+        { $set: { name: argsObj.newName } }
+      );
 
-        console.log(flower);
-      }
+      console.log(flower);
     } catch (error) {
       console.log(error);
     }
