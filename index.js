@@ -69,17 +69,9 @@ const Flower = require("./models/flower");
   else if (argsObj.deleteOne) {
     const flower = await Flower.deleteOne({});
     console.log(flower);
-  } //this function need working
-  else if (argsObj.deleteKey) {
-    try {
-      const flower = await Flower.findOneAndDelete({});
-      console.log(flower);
-    } catch (error) {
-      console.log(error);
-    }
   }
   //delete compelete document
-  else if (argsObj.deleteMany) {
+  else if (argsObj.delete) {
     try {
       const flower = await Flower.deleteOne(
         { name: argsObj.name } || { colour: argsObj.colour } || {
