@@ -39,16 +39,26 @@ const Flower = require("./models/flower");
       console.log(error);
     } //find document by passing any detail
   } else if (argsObj.filter) {
-    const flower = await Flower.findOne({});
+    const flower = await Flower.findOne(
+      { name: argsObj.name } || { colour: argsObj.colour } || {
+          indication: argsObj.indication,
+        }
+    );
     console.log(flower);
   }
+  // npm start -- --update --query "sunflower" --name "rose" --colour "red" --indication "love" --price 10
   // update function
-  //npm start -- --update --name "tulip" --colour "purple" --indication "happiness" --price 7 or select any key and value
   else if (argsObj.update) {
     try {
+      const query = argsObj.name;
       const flower = await Flower.updateOne(
-        { name: argsObj.name },
-        { $set: { name: argsObj.newName } }
+        { query },
+        {
+          name: argsObj.name,
+          colour: argsObj.colour,
+          indication: argsObj.indication,
+          price: argsObj.price,
+        }
       );
 
       console.log(flower);
