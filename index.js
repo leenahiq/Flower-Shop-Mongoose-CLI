@@ -13,6 +13,7 @@ const Flower = require("./models/flower");
 
   // function to creat new collection
   //npm start -- --add --name "rose" --colour "red" --indication "love" --price 10
+
   if (argsObj.add) {
     // instanse from modal Flower
     try {
@@ -24,6 +25,7 @@ const Flower = require("./models/flower");
       });
       console.log(flower);
       // to save in the database
+
       await flower.save();
     } catch (error) {
       console.log(error);
@@ -88,9 +90,3 @@ const Flower = require("./models/flower");
 
   await mongoose.connection.close();
 })();
-//sudo code concept
-// name: flowerName;
-// colour: colour;
-// indication: indication of flower ;
-// price: price
-// npm start --name "rose" --colour "red" --indication "love" --price 5
